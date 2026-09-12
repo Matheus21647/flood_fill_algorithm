@@ -4,11 +4,10 @@ import java.io.IOException;
 public class FloodFill {
 
     // Método Flood Fill utilizando PILHA (LIFO)
-    public static void executarComPilha(ManipuladorImagem img, int xInicial, int yInicial, Color novaCorObj) {
+    public static void executarComPilha(ManipuladorImagem img, int xInicial, int yInicial, Color novaCorObj, int frequencia) {
         int corFundoOriginal = img.getCor(xInicial, yInicial);
         int novaCorInt = novaCorObj.getRGB();
 
-        // Se a cor inicial já for igual à nova cor n faz nada
         if (corFundoOriginal == novaCorInt) {
             return;
         }
@@ -21,27 +20,23 @@ public class FloodFill {
             int x = p.getX();
             int y = p.getY();
 
-            //  Verifica se está dentro dos limites da imagem
-            //   Verifica se a cor do pixel atual é igual à cor de fundo original
             if (img.coordenadaValida(x, y) && img.getCor(x, y) == corFundoOriginal) {
-
-                // Pinta o pixel
                 img.setCor(x, y, novaCorInt);
 
-                // Salva o frame pra  animação
-                img.salvarFrameAnimacao(1);
+                // Usa a frequência que veio do Main para salvar os arquivos para fazer a animacao
+                img.salvarFrameAnimacao(frequencia);
 
-                // Empilha os 4 vizinhos laterais (cima, baixo, esquerda, direita)
-                pilha.push(new Ponto(x, y - 1)); // Cima
-                pilha.push(new Ponto(x, y + 1)); // Baixo
-                pilha.push(new Ponto(x - 1, y)); // Esquerda
-                pilha.push(new Ponto(x + 1, y)); // Direita
+                pilha.push(new Ponto(x, y - 1));
+                pilha.push(new Ponto(x, y + 1));
+                pilha.push(new Ponto(x - 1, y));
+                pilha.push(new Ponto(x + 1, y));
             }
         }
     }
 
+
     // Método Flood Fill utilizando FILA (FIFO)
-    public static void executarComFila(ManipuladorImagem img, int xInicial, int yInicial, Color novaCorObj) {
+    public static void executarComFila(ManipuladorImagem img, int xInicial, int yInicial, Color novaCorObj, int frequencia) {
         int corFundoOriginal = img.getCor(xInicial, yInicial);
         int novaCorInt = novaCorObj.getRGB();
 
@@ -65,7 +60,7 @@ public class FloodFill {
                 img.setCor(x, y, novaCorInt);
 
                 // Salva o frame para a animação
-                img.salvarFrameAnimacao(10);
+                img.salvarFrameAnimacao(frequencia);
 
                 // Enfileira os 4 vizinhos laterais (cima, baixo, esquerda, direita)
                 fila.enqueue(new Ponto(x, y - 1)); // Cima
