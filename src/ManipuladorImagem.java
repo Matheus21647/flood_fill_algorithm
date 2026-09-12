@@ -12,7 +12,7 @@ public class ManipuladorImagem {
     private int contadorFrames = 0;
     private File pastaFrames;
 
-    // Construtor: carrega a imagem do caminho informado
+
     public ManipuladorImagem(String caminhoArquivo) throws IOException {
         File arquivo = new File(caminhoArquivo);
         this.imagem = ImageIO.read(arquivo);
@@ -44,7 +44,7 @@ public class ManipuladorImagem {
         imagem.setRGB(x, y, novaCor);
     }
 
-    // Verifica se a coordenada está dentro dos limites da imagem (Index Out Of Bounds)
+    // Verifica se a coordenada está dentro dos limites da imagem
     public boolean coordenadaValida(int x, int y) {
         return x >= 0 && x < largura && y >= 0 && y < altura;
     }
