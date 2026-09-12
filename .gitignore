@@ -1,4 +1,18 @@
+### Mac OS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+### Java / Compilação ###
+*.class
+target/
+
 ### IntelliJ IDEA ###
+.idea/
+*.iml
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
@@ -26,5 +40,7 @@ bin/
 ### VS Code ###
 .vscode/
 
-### Mac OS ###
-.DS_Store
+### Projeto Flood Fill (Imagens de Saída e Animações) ###
+# Ignora todos os PNGs gerados automaticamente pelo programa, exceto a entrada
+*.png
+!entrada.png
